@@ -71,9 +71,9 @@ export default function ArticleList({ articles }: Props) {
             <div className="lg:col-span-8 space-y-8">
                 <div className="space-y-6">
                     {paginatedArticles.map(article => (
-                        <a key={article.slug} href={`/articles/${article.slug}`} className="group block bg-surface rounded-2xl p-8 border border-white/5 hover:border-primary/30 transition-all duration-300 hover:-translate-x-2">
+                        <a key={article.slug} href={`/articles/${article.slug}`} className="group block bg-surface rounded-2xl p-8 border border-black/5 hover:border-black/20 transition-all duration-300 hover:-translate-x-2">
                             <div className="flex flex-col gap-3">
-                                <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors font-heading">
+                                <h3 className="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors font-heading">
                                     {article.data.title}
                                 </h3>
                                 <div className="flex items-center gap-4 text-sm text-gray-500 font-mono">
@@ -87,7 +87,7 @@ export default function ArticleList({ articles }: Props) {
                                         ))}
                                     </div>
                                 </div>
-                                <p className="text-gray-400 line-clamp-2 leading-relaxed">
+                                <p className="text-gray-600 line-clamp-2 leading-relaxed">
                                     {article.data.description}
                                 </p>
                             </div>
@@ -95,7 +95,7 @@ export default function ArticleList({ articles }: Props) {
                     ))}
 
                     {paginatedArticles.length === 0 && (
-                        <div className="text-center py-20 bg-surface rounded-3xl border border-white/5">
+                        <div className="text-center py-20 bg-surface rounded-3xl border border-black/5">
                             <p className="text-xl text-gray-500">No articles found matching your criteria.</p>
                         </div>
                     )}
@@ -107,7 +107,7 @@ export default function ArticleList({ articles }: Props) {
                         <button
                             onClick={() => handlePageChange(currentPage - 1)}
                             disabled={currentPage === 1}
-                            className="p-2 rounded-lg bg-surface border border-white/10 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/5 transition-colors"
+                            className="p-2 rounded-lg bg-surface border border-black/10 text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-black/5 transition-colors"
                         >
                             <ChevronLeft className="w-5 h-5" />
                         </button>
@@ -117,7 +117,7 @@ export default function ArticleList({ articles }: Props) {
                         <button
                             onClick={() => handlePageChange(currentPage + 1)}
                             disabled={currentPage === totalPages}
-                            className="p-2 rounded-lg bg-surface border border-white/10 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-white/5 transition-colors"
+                            className="p-2 rounded-lg bg-surface border border-black/10 text-gray-900 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-black/5 transition-colors"
                         >
                             <ChevronRight className="w-5 h-5" />
                         </button>
@@ -128,15 +128,15 @@ export default function ArticleList({ articles }: Props) {
             {/* Right Column: Sidebar (4 cols) */}
             <div className="lg:col-span-4 space-y-12">
                 {/* Search Box */}
-                <div className="bg-surface rounded-3xl p-6 border border-white/5">
-                    <h3 className="text-lg font-bold text-white mb-4 font-heading flex items-center gap-2">
+                <div className="bg-surface rounded-3xl p-6 border border-black/5">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4 font-heading flex items-center gap-2">
                         <Search className="w-5 h-5 text-primary" /> Search
                     </h3>
                     <div className="relative">
                         <input
                             type="text"
                             placeholder="Search articles..."
-                            className="w-full pl-4 pr-4 py-3 bg-black/20 border border-white/10 rounded-xl focus:ring-1 focus:ring-primary focus:border-primary outline-none text-white placeholder-gray-500 transition-all"
+                            className="w-full pl-4 pr-4 py-3 bg-black/5 border border-black/10 rounded-xl focus:ring-1 focus:ring-primary focus:border-primary outline-none text-gray-900 placeholder-gray-500 transition-all"
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                         />
@@ -144,12 +144,12 @@ export default function ArticleList({ articles }: Props) {
                 </div>
 
                 {/* Tags Cloud */}
-                <div className="bg-surface rounded-3xl p-6 border border-white/5">
-                    <h3 className="text-lg font-bold text-white mb-6 font-heading">Tags</h3>
+                <div className="bg-surface rounded-3xl p-6 border border-black/5">
+                    <h3 className="text-lg font-bold text-gray-900 mb-6 font-heading">Tags</h3>
                     <div className="flex flex-wrap gap-2">
                         <button
                             onClick={() => setSelectedTag(null)}
-                            className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${!selectedTag ? 'bg-primary text-black' : 'bg-black/20 border border-white/10 text-gray-400 hover:text-white hover:border-white/30'}`}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${!selectedTag ? 'bg-primary text-white' : 'bg-black/5 border border-black/10 text-gray-600 hover:text-gray-900 hover:border-black/30'}`}
                         >
                             All
                         </button>
@@ -157,7 +157,7 @@ export default function ArticleList({ articles }: Props) {
                             <button
                                 key={tag}
                                 onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                                className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedTag === tag ? 'bg-primary text-black' : 'bg-black/20 border border-white/10 text-gray-400 hover:text-white hover:border-white/30'}`}
+                                className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedTag === tag ? 'bg-primary text-white' : 'bg-black/5 border border-black/10 text-gray-600 hover:text-gray-900 hover:border-black/30'}`}
                             >
                                 {tag}
                             </button>
@@ -166,13 +166,13 @@ export default function ArticleList({ articles }: Props) {
                 </div>
 
                 {/* Archive */}
-                <div className="bg-surface rounded-3xl p-6 border border-white/5">
-                    <h3 className="text-lg font-bold text-white mb-6 font-heading">Archive</h3>
+                <div className="bg-surface rounded-3xl p-6 border border-black/5">
+                    <h3 className="text-lg font-bold text-gray-900 mb-6 font-heading">Archive</h3>
                     <div className="space-y-2">
                         {archives.map(archive => (
                             <div key={archive.key} className="flex justify-between items-center text-sm group cursor-default">
-                                <span className="text-gray-400 group-hover:text-white transition-colors">{archive.label}</span>
-                                <span className="text-gray-600 font-mono bg-white/5 px-2 py-0.5 rounded text-xs group-hover:text-primary transition-colors">{archive.count}</span>
+                                <span className="text-gray-500 group-hover:text-gray-900 transition-colors">{archive.label}</span>
+                                <span className="text-gray-600 font-mono bg-black/5 px-2 py-0.5 rounded text-xs group-hover:text-primary transition-colors">{archive.count}</span>
                             </div>
                         ))}
                     </div>

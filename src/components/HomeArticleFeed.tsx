@@ -6,7 +6,7 @@ interface Article {
     slug: string;
     data: {
         title: string;
-        pubDate: string;
+        pubDate: Date;
         description: string;
         tags: string[];
     };
@@ -36,8 +36,8 @@ export default function HomeArticleFeed({ articles }: Props) {
                     <div
                         key={article.slug}
                         className={`bg-surface border transition-all duration-300 rounded-2xl overflow-hidden ${expandedId === article.slug
-                                ? 'border-primary shadow-lg shadow-primary/10'
-                                : 'border-white/5 hover:border-white/20'
+                            ? 'border-primary shadow-lg shadow-primary/10'
+                            : 'border-black/5 hover:border-black/20'
                             }`}
                     >
                         <button
@@ -45,7 +45,7 @@ export default function HomeArticleFeed({ articles }: Props) {
                             className="w-full text-left p-6 flex items-start justify-between group"
                         >
                             <div className="flex-grow pr-4">
-                                <h3 className={`text-xl font-bold mb-2 transition-colors ${expandedId === article.slug ? 'text-primary' : 'text-white group-hover:text-primary'
+                                <h3 className={`text-xl font-bold mb-2 transition-colors ${expandedId === article.slug ? 'text-primary' : 'text-gray-900 group-hover:text-primary'
                                     }`}>
                                     {article.data.title}
                                 </h3>
@@ -64,7 +64,7 @@ export default function HomeArticleFeed({ articles }: Props) {
                                     <p className="text-gray-400 text-sm line-clamp-2">{article.data.description}</p>
                                 )}
                             </div>
-                            <div className={`p-2 rounded-full bg-white/5 transition-transform duration-300 ${expandedId === article.slug ? 'rotate-180 bg-primary/20 text-primary' : 'text-gray-400'
+                            <div className={`p-2 rounded-full bg-black/5 transition-transform duration-300 ${expandedId === article.slug ? 'rotate-180 bg-primary/20 text-primary' : 'text-gray-400'
                                 }`}>
                                 <ChevronDown className="w-5 h-5" />
                             </div>
@@ -74,8 +74,8 @@ export default function HomeArticleFeed({ articles }: Props) {
                             className={`transition-all duration-500 ease-in-out overflow-hidden ${expandedId === article.slug ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
                                 }`}
                         >
-                            <div className="p-6 pt-0 border-t border-white/5">
-                                <div className="prose prose-invert prose-sm max-w-none prose-p:text-gray-400 prose-headings:text-white prose-a:text-primary prose-code:text-secondary">
+                            <div className="p-6 pt-0 border-t border-black/5">
+                                <div className="prose prose-sm max-w-none prose-p:text-gray-600 prose-headings:text-gray-900 prose-a:text-primary prose-code:text-secondary">
                                     <ReactMarkdown
                                         components={{
                                             img: () => null // Explicitly disable images
@@ -84,10 +84,10 @@ export default function HomeArticleFeed({ articles }: Props) {
                                         {article.body}
                                     </ReactMarkdown>
                                 </div>
-                                <div className="mt-6 pt-4 border-t border-white/5 flex justify-end">
+                                <div className="mt-6 pt-4 border-t border-black/5 flex justify-end">
                                     <a
                                         href={`/articles/${article.slug}`}
-                                        className="text-sm font-medium text-white hover:text-primary transition-colors flex items-center gap-1"
+                                        className="text-sm font-medium text-gray-900 hover:text-primary transition-colors flex items-center gap-1"
                                     >
                                         Read full page &rarr;
                                     </a>

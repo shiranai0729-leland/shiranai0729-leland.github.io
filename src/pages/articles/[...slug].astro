@@ -15,12 +15,15 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+    title={`${post.data.title} | Shiranai`}
+    description={post.data.description}
+>
     <article class="py-24 min-h-screen">
         <div class="container mx-auto px-4 max-w-4xl">
             {
                 post.data.heroImage && (
-                    <div class="rounded-3xl overflow-hidden mb-12 shadow-2xl border border-white/10 relative">
+                    <div class="rounded-3xl overflow-hidden mb-12 shadow-2xl border border-black/10 relative">
                         <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-50" />
                         <img
                             src={post.data.heroImage}
@@ -30,7 +33,7 @@ const { Content } = await post.render();
                     </div>
                 )
             }
-            <div class="prose prose-lg prose-invert mx-auto">
+            <div class="prose prose-lg mx-auto">
                 <div class="mb-12 text-center">
                     <h1
                         class="text-4xl md:text-6xl font-black mb-6 tracking-tighter leading-tight"
@@ -38,7 +41,7 @@ const { Content } = await post.render();
                         {post.data.title}
                     </h1>
                     <div
-                        class="text-gray-400 flex flex-col md:flex-row justify-center gap-4 items-center"
+                        class="text-gray-600 flex flex-col md:flex-row justify-center gap-4 items-center"
                     >
                         <time
                             datetime={post.data.pubDate.toISOString()}
@@ -59,7 +62,7 @@ const { Content } = await post.render();
                             post.data.tags && (
                                 <div class="flex gap-2">
                                     {post.data.tags.map((tag) => (
-                                        <span class="bg-surface border border-white/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                        <span class="bg-surface border border-black/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                                             #{tag}
                                         </span>
                                     ))}

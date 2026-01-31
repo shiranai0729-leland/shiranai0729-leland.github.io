@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { ArrowRight, Code, Sparkles } from "lucide-react";
+import { ArrowDown, Sun } from "lucide-react";
 import { getCollection } from "astro:content";
 import HomeArticleFeed from "../components/HomeArticleFeed";
 import SocialSidebar from "../components/SocialSidebar.astro";
@@ -10,75 +10,88 @@ const allArticles = await getCollection("articles");
 const latestArticles = allArticles
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .slice(0, 5);
-
-const profileImage =
-    "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Cyberpunk%20developer%20avatar%2C%20neon%20lights%2C%20dark%20background%2C%20vector%20art&image_size=square";
 ---
 
-<Layout title="Home | Creative Developer">
-    <!-- Hero Section -->
+<Layout title="Shiranai | Fullstack Engineer">
+    <!-- Immersive Hero Section -->
     <section
-        class="relative min-h-[60vh] flex items-center justify-center overflow-visible pt-20 pb-20"
+        class="relative h-screen w-full overflow-hidden flex flex-col justify-between bg-background"
+        id="hero"
     >
-        <!-- Abstract Background Elements -->
+        <!-- Wavy Background -->
         <div
-            class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse pointer-events-none"
+            class="absolute inset-0 z-0 opacity-40 pointer-events-none flex items-center justify-center"
         >
-        </div>
-        <div
-            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] animate-pulse pointer-events-none"
-            style="animation-delay: 2s"
-        >
+            <svg
+                viewBox="0 0 1440 800"
+                class="w-full h-full object-cover text-gray-300"
+                preserveAspectRatio="none"
+            >
+                <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    d="M0,400 C320,800 640,-100 1440,300"
+                    class="path-1"></path>
+                <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    d="M0,450 C400,200 800,900 1440,400"
+                    class="path-2 opacity-70"></path>
+                <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    d="M0,300 C200,600 500,100 1440,500"
+                    class="path-3 opacity-50"></path>
+                <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    d="M0,500 C500,200 900,800 1440,400"
+                    class="path-4 opacity-30"></path>
+            </svg>
         </div>
 
-        <div class="container mx-auto px-4 relative z-10 text-center">
-            <div class="hero-content opacity-0 translate-y-10">
-                <div
-                    class="inline-block mb-4 px-4 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
-                >
-                    <span
-                        class="text-sm font-medium bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-                    >
-                        Available for freelance
-                    </span>
-                </div>
+        <!-- Spacer for centering -->
+        <div class="flex-grow"></div>
 
+        <!-- Bottom Content Area -->
+        <div
+            class="relative z-10 w-full px-8 pb-12 md:pb-24 grid grid-cols-1 md:grid-cols-2 items-end"
+        >
+            <!-- Left: Main Typography -->
+            <div class="hero-text opacity-0 translate-y-10">
                 <h1
-                    class="text-6xl md:text-8xl lg:text-9xl font-black mb-8 tracking-tighter leading-none font-heading"
+                    class="text-6xl md:text-8xl lg:text-9xl font-heading font-black leading-[0.85] tracking-tight text-gray-900 mb-4"
                 >
-                    CREATIVE<br />
-                    <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient"
-                    >
-                        DEVELOPER
-                    </span>
+                    Fullstack<br />
+                    engineer
                 </h1>
-
-                <p
-                    class="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto font-light"
+                <div
+                    class="text-lg md:text-xl text-gray-600 max-w-lg font-heading font-medium leading-tight space-y-0 mt-8 ml-2 md:ml-3"
                 >
-                    Crafting immersive digital experiences with code and
-                    creativity.
-                </p>
+                    <p>Staying humble, building everything</p>
+                    <p>知らないから、すべてを創れる</p>
+                </div>
             </div>
         </div>
 
-        <!-- Floating Elements -->
-        <div
-            class="absolute top-1/3 left-10 hidden lg:block animate-float opacity-50"
+        <!-- Mobile Scroll Indicator -->
+        <button
+            id="scroll-btn-mobile"
+            class="absolute bottom-8 left-1/2 -translate-x-1/2 md:hidden animate-bounce text-gray-500 p-4"
         >
-            <Code className="w-16 h-16 text-primary" />
-        </div>
-        <div
-            class="absolute bottom-1/3 right-10 hidden lg:block animate-float opacity-50"
-            style="animation-delay: 1.5s"
-        >
-            <Sparkles className="w-16 h-16 text-secondary" />
-        </div>
+            <ArrowDown className="w-6 h-6" />
+        </button>
     </section>
 
     <!-- Main Content Layout -->
-    <section class="py-12 relative z-10">
+    <section
+        class="min-h-screen py-24 relative z-10 bg-background flex items-center"
+        id="projects"
+    >
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-12 gap-12">
                 <!-- Left Column: Article Feed (8 cols) -->
@@ -96,33 +109,74 @@ const profileImage =
 
     <script>
         import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-        // Hero Animation
-        gsap.to(".hero-content", {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- Logic to Hide Floating Nav on Hero ---
+        const floatingNav = document.querySelector("nav.fixed.bottom-8");
+        const heroSection = document.getElementById("hero");
+
+        if (floatingNav && heroSection) {
+            const nav = floatingNav as HTMLElement;
+            // Initially hide
+            nav.classList.add("transition-opacity", "duration-500");
+            nav.style.opacity = "0";
+            nav.style.pointerEvents = "none";
+
+            // Check scroll position to toggle nav
+            window.addEventListener("scroll", () => {
+                const scrollY = window.scrollY;
+                if (scrollY > window.innerHeight * 0.5) {
+                    nav.style.opacity = "1";
+                    nav.style.pointerEvents = "auto";
+                } else {
+                    nav.style.opacity = "0";
+                    nav.style.pointerEvents = "none";
+                }
+            });
+        }
+
+        // --- Scroll Logic for Mobile ---
+        const scrollBtnMobile = document.getElementById("scroll-btn-mobile");
+        const scrollToContent = () => {
+            const projectsSection = document.getElementById("projects");
+            if (projectsSection) {
+                projectsSection.scrollIntoView({ behavior: "smooth" });
+            }
+        };
+
+        if (scrollBtnMobile)
+            scrollBtnMobile.addEventListener("click", scrollToContent);
+
+        // --- Animations ---
+
+        // Simple Fade In
+        gsap.to(".hero-text", {
             opacity: 1,
             y: 0,
             duration: 1.5,
             ease: "power3.out",
-            delay: 0.2,
+            delay: 0.5,
+        });
+
+        // Wavy Lines Animation
+        const paths = document.querySelectorAll('path[class^="path-"]');
+        paths.forEach((path, i) => {
+            gsap.to(path, {
+                attr: {
+                    d:
+                        i % 2 === 0
+                            ? "M0,450 C400,200 800,900 1440,400"
+                            : "M0,400 C320,800 640,-100 1440,300",
+                },
+                duration: 5 + i,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+            });
         });
     </script>
 
-    <style>
-        .animate-gradient {
-            background-size: 200% auto;
-            animation: gradient 4s linear infinite;
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-    </style>
+    <style></style>
 </Layout>
