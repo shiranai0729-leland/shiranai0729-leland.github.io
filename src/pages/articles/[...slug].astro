@@ -1,0 +1,75 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("articles");
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: post,
+    }));
+}
+type Props = CollectionEntry<"articles">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+    <article class="py-24 min-h-screen">
+        <div class="container mx-auto px-4 max-w-4xl">
+            {
+                post.data.heroImage && (
+                    <div class="rounded-3xl overflow-hidden mb-12 shadow-2xl border border-white/10 relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-50" />
+                        <img
+                            src={post.data.heroImage}
+                            alt={post.data.title}
+                            class="w-full h-auto object-cover max-h-[600px]"
+                        />
+                    </div>
+                )
+            }
+            <div class="prose prose-lg prose-invert mx-auto">
+                <div class="mb-12 text-center">
+                    <h1
+                        class="text-4xl md:text-6xl font-black mb-6 tracking-tighter leading-tight"
+                    >
+                        {post.data.title}
+                    </h1>
+                    <div
+                        class="text-gray-400 flex flex-col md:flex-row justify-center gap-4 items-center"
+                    >
+                        <time
+                            datetime={post.data.pubDate.toISOString()}
+                            class="font-mono text-sm text-secondary"
+                        >
+                            {
+                                post.data.pubDate.toLocaleDateString(
+                                    undefined,
+                                    {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    },
+                                )
+                            }
+                        </time>
+                        {
+                            post.data.tags && (
+                                <div class="flex gap-2">
+                                    {post.data.tags.map((tag) => (
+                                        <span class="bg-surface border border-white/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                            #{tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            )
+                        }
+                    </div>
+                </div>
+                <Content />
+            </div>
+        </div>
+    </article>
+</Layout>

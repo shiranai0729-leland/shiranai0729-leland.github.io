@@ -1,0 +1,86 @@
+---
+import { Github, Linkedin, ArrowRight, MapPin, Mail, Briefcase } from 'lucide-react';
+
+const profileImage = "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=cyberpunk%20developer%20portrait%20casual%20neon&image_size=portrait_4_3";
+---
+
+<div class="space-y-6 sticky top-8">
+    <!-- Profile Card -->
+    <div class="bg-surface border border-white/5 rounded-3xl p-6 shadow-xl relative overflow-hidden group">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        
+        <div class="relative z-10 text-center">
+            <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-primary/50 mb-4 shadow-lg shadow-primary/20">
+                <img src={profileImage} alt="Profile" class="w-full h-full object-cover" />
+            </div>
+            
+            <h3 class="text-xl font-heading font-bold text-white mb-1">Creative Developer</h3>
+            <p class="text-sm text-gray-400 mb-6">Building digital dreams with code.</p>
+            
+            <div class="space-y-3 text-sm text-left bg-black/20 rounded-xl p-4 mb-6">
+                <div class="flex items-center text-gray-400">
+                    <MapPin className="w-4 h-4 mr-3 text-primary" />
+                    <span>San Francisco, CA</span>
+                </div>
+                <div class="flex items-center text-gray-400">
+                    <Briefcase className="w-4 h-4 mr-3 text-secondary" />
+                    <span>Open to work</span>
+                </div>
+            </div>
+
+            <a href="/about" class="block w-full py-3 bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl text-sm font-medium transition-colors">
+                More About Me
+            </a>
+        </div>
+    </div>
+
+    <!-- GitHub Card -->
+    <a href="https://github.com" target="_blank" class="block bg-[#181717] border border-white/5 rounded-3xl p-6 hover:border-white/20 transition-all hover:-translate-y-1 group relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+            <Github className="w-24 h-24 rotate-12" />
+        </div>
+        
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="p-2 bg-white/10 rounded-lg">
+                    <Github className="w-6 h-6 text-white" />
+                </div>
+                <span class="font-bold text-lg">GitHub</span>
+            </div>
+            
+            <div class="flex justify-between text-sm text-gray-400 font-mono mb-2">
+                <span>Repos</span>
+                <span class="text-white">25+</span>
+            </div>
+            <div class="flex justify-between text-sm text-gray-400 font-mono">
+                <span>Contributions</span>
+                <span class="text-green-400">500+</span>
+            </div>
+        </div>
+    </a>
+
+    <!-- LinkedIn Card -->
+    <a href="https://linkedin.com" target="_blank" class="block bg-[#0077B5] border border-white/5 rounded-3xl p-6 hover:brightness-110 transition-all hover:-translate-y-1 group relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+            <Linkedin className="w-24 h-24 rotate-12 text-white" />
+        </div>
+        
+        <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="p-2 bg-white/20 rounded-lg">
+                    <Linkedin className="w-6 h-6 text-white" />
+                </div>
+                <span class="font-bold text-lg text-white">LinkedIn</span>
+            </div>
+            
+            <div class="flex justify-between text-sm text-white/80 font-mono mb-2">
+                <span>Connections</span>
+                <span class="text-white">500+</span>
+            </div>
+            <div class="flex justify-between text-sm text-white/80 font-mono">
+                <span>Posts</span>
+                <span class="text-white">12</span>
+            </div>
+        </div>
+    </a>
+</div>

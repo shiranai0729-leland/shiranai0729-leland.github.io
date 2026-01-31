@@ -1,0 +1,148 @@
+---
+import "../styles/global.css";
+import FloatingNav from "../components/FloatingNav.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description = "Personal Website" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@200..900&family=Ubuntu:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body
+        class="bg-background text-white min-h-screen flex flex-col font-sans selection:bg-primary selection:text-white overflow-x-hidden"
+    >
+        <div
+            class="fixed inset-0 z-[-1] opacity-20 pointer-events-none"
+            style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 24px 24px;"
+        >
+        </div>
+        <div class="fixed inset-0 z-[-2] bg-background"></div>
+
+        <div
+            id="cursor-follower"
+            class="fixed w-8 h-8 rounded-full border border-primary pointer-events-none z-50 transition-transform duration-100 ease-out hidden md:block mix-blend-difference"
+        >
+        </div>
+        <div
+            id="cursor-dot"
+            class="fixed w-2 h-2 bg-primary rounded-full pointer-events-none z-50 hidden md:block"
+        >
+        </div>
+
+        <main
+            class="flex-grow relative z-10 bg-background shadow-2xl min-h-[100vh]"
+        >
+            <slot />
+        </main>
+
+        <FloatingNav />
+        <Footer />
+
+        <script>
+            import { gsap } from "gsap";
+            import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Custom Cursor Logic
+            const cursorFollower = document.getElementById("cursor-follower");
+            const cursorDot = document.getElementById("cursor-dot");
+
+            // Function to reset cursor position to bottom center (behind nav bar)
+            const resetCursor = () => {
+                if (cursorFollower && cursorDot) {
+                    const windowHeight = window.innerHeight;
+                    const windowWidth = window.innerWidth;
+                    // Position at bottom center
+                    const initialX = windowWidth / 2;
+                    const initialY = windowHeight - 40; // Approx nav bar height
+
+                    gsap.set(cursorFollower, {
+                        x: initialX,
+                        y: initialY,
+                        opacity: 0,
+                    });
+                    gsap.set(cursorDot, {
+                        x: initialX,
+                        y: initialY,
+                        opacity: 0,
+                    });
+                }
+            };
+
+            // Run on initial load
+            if (cursorFollower && cursorDot) {
+                // Initialize at bottom center
+                resetCursor();
+
+                document.addEventListener("mousemove", (e) => {
+                    // Make visible on first move
+                    gsap.to([cursorFollower, cursorDot], {
+                        opacity: 1,
+                        duration: 0.2,
+                        overwrite: "auto",
+                    });
+
+                    gsap.to(cursorDot, {
+                        x: e.clientX,
+                        y: e.clientY,
+                        duration: 0.1,
+                        ease: "power2.out",
+                    });
+                    gsap.to(cursorFollower, {
+                        x: e.clientX - 16, // Center the 32px circle
+                        y: e.clientY - 16,
+                        duration: 0.5,
+                        ease: "power2.out",
+                    });
+                });
+
+                // Hover effects
+                const interactiveElements =
+                    document.querySelectorAll("a, button, .card");
+                interactiveElements.forEach((el) => {
+                    el.addEventListener("mouseenter", () => {
+                        gsap.to(cursorFollower, {
+                            scale: 2,
+                            borderColor: "#FF0080",
+                            duration: 0.3,
+                        });
+                    });
+                    el.addEventListener("mouseleave", () => {
+                        gsap.to(cursorFollower, {
+                            scale: 1,
+                            borderColor: "#FF4D00",
+                            duration: 0.3,
+                        });
+                    });
+                });
+            }
+
+            // Handle View Transitions (if enabled in future) or just simple page navigation cleanup
+            document.addEventListener("astro:after-swap", () => {
+                resetCursor();
+                // Re-attach listeners if needed, but for MPA standard nav, the script re-runs anyway.
+                // However, if the browser restores scroll position, we want cursor to be ready.
+            });
+        </script>
+    </body>
+</html>

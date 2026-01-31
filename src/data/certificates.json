@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Certified Cloud Practitioner",
+    "organization": "AWS",
+    "date": "2024-01-15",
+    "image": "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=aws%20certification%20badge%20style&image_size=square",
+    "verificationUrl": "https://aws.amazon.com/verification"
+  },
+  {
+    "title": "Meta Frontend Developer",
+    "organization": "Meta",
+    "date": "2023-11-20",
+    "image": "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=meta%20certification%20badge%20style&image_size=square",
+    "verificationUrl": "https://coursera.org/verify/meta"
+  },
+  {
+    "title": "Google UX Design Professional",
+    "organization": "Google",
+    "date": "2023-08-10",
+    "image": "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=google%20ux%20certification%20badge&image_size=square",
+    "verificationUrl": "https://coursera.org/verify/google"
+  }
+]

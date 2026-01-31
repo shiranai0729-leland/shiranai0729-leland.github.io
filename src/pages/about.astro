@@ -1,0 +1,192 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Mail, MapPin, Briefcase, GraduationCap } from "lucide-react";
+---
+
+<Layout
+    title="About Me | Creative Developer"
+    description="Learn more about my background, skills, and experience."
+>
+    <section class="py-24 min-h-screen">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h1
+                class="text-5xl md:text-7xl font-black mb-16 text-center tracking-tighter"
+            >
+                ABOUT <span class="text-secondary">ME</span>
+            </h1>
+
+            <div class="flex flex-col md:flex-row gap-12 mb-20 items-start">
+                <div class="md:w-1/3 sticky top-24">
+                    <div
+                        class="rounded-3xl overflow-hidden shadow-2xl mb-8 border border-white/10 relative group"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"
+                        >
+                        </div>
+                        <img
+                            src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=cyberpunk%20developer%20portrait%20casual%20neon&image_size=portrait_4_3"
+                            alt="Profile"
+                            class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700"
+                        />
+                    </div>
+                    <div class="space-y-4 text-sm font-medium">
+                        <div
+                            class="flex items-center text-gray-400 p-4 bg-surface rounded-2xl border border-white/5 hover:border-white/20 transition-colors"
+                        >
+                            <MapPin class="w-5 h-5 mr-3 text-primary" />
+                            <span>San Francisco, CA</span>
+                        </div>
+                        <div
+                            class="flex items-center text-gray-400 p-4 bg-surface rounded-2xl border border-white/5 hover:border-white/20 transition-colors"
+                        >
+                            <Mail class="w-5 h-5 mr-3 text-secondary" />
+                            <a
+                                href="mailto:hello@example.com"
+                                class="hover:text-white transition-colors"
+                                >hello@example.com</a
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:w-2/3">
+                    <div class="prose prose-invert prose-lg mb-16">
+                        <p class="lead text-xl text-gray-300">
+                            Hi, I'm a passionate <span
+                                class="text-primary font-bold"
+                                >Creative Developer</span
+                            > with over 5 years of experience in crafting immersive
+                            digital experiences. I blend technical expertise with
+                            artistic vision to solve complex problems.
+                        </p>
+                        <p class="text-gray-400">
+                            My journey started when I wrote my first line of
+                            code in a dimly lit dorm room. Since then, I've
+                            worked with innovative startups and established
+                            brands, helping them deliver high-quality,
+                            performant, and visually stunning web applications.
+                        </p>
+                    </div>
+
+                    <h3
+                        class="text-2xl font-bold mb-6 text-white flex items-center gap-2"
+                    >
+                        <span
+                            class="w-8 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"
+                        ></span>
+                        Skills
+                    </h3>
+                    <div class="flex flex-wrap gap-3 mb-16">
+                        {
+                            [
+                                "JavaScript",
+                                "TypeScript",
+                                "React",
+                                "Vue",
+                                "Node.js",
+                                "Python",
+                                "AWS",
+                                "Docker",
+                                "GraphQL",
+                                "GSAP",
+                                "Three.js",
+                                "WebGL",
+                            ].map((skill) => (
+                                <span class="bg-surface border border-white/10 text-gray-300 px-4 py-2 rounded-full text-sm font-medium hover:border-primary/50 hover:text-primary transition-colors cursor-default">
+                                    {skill}
+                                </span>
+                            ))
+                        }
+                    </div>
+
+                    <div class="mb-16">
+                        <h2
+                            class="text-3xl font-bold mb-10 flex items-center gap-4 text-white"
+                        >
+                            <Briefcase class="w-8 h-8 text-primary" /> Experience
+                        </h2>
+                        <div
+                            class="space-y-12 border-l border-white/10 pl-8 relative"
+                        >
+                            <div class="relative group">
+                                <div
+                                    class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-primary group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(255,77,0,0.5)]"
+                                >
+                                </div>
+                                <h3
+                                    class="text-2xl font-bold text-white group-hover:text-primary transition-colors"
+                                >
+                                    Senior Frontend Engineer
+                                </h3>
+                                <div
+                                    class="text-primary mb-3 font-mono text-sm"
+                                >
+                                    Tech Corp Inc. • 2022 - Present
+                                </div>
+                                <p class="text-gray-400 leading-relaxed">
+                                    Leading the frontend team in rebuilding the
+                                    core product using Next.js and Tailwind CSS.
+                                    Improved performance by 40% and implemented
+                                    a new design system.
+                                </p>
+                            </div>
+                            <div class="relative group">
+                                <div
+                                    class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-secondary group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(255,0,128,0.5)]"
+                                >
+                                </div>
+                                <h3
+                                    class="text-2xl font-bold text-white group-hover:text-secondary transition-colors"
+                                >
+                                    Software Developer
+                                </h3>
+                                <div
+                                    class="text-secondary mb-3 font-mono text-sm"
+                                >
+                                    StartupXYZ • 2020 - 2022
+                                </div>
+                                <p class="text-gray-400 leading-relaxed">
+                                    Developed and maintained multiple
+                                    client-facing applications. Implemented
+                                    real-time features using WebSockets and
+                                    WebGL visualizations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2
+                            class="text-3xl font-bold mb-10 flex items-center gap-4 text-white"
+                        >
+                            <GraduationCap class="w-8 h-8 text-secondary" /> Education
+                        </h2>
+                        <div
+                            class="space-y-12 border-l border-white/10 pl-8 relative"
+                        >
+                            <div class="relative group">
+                                <div
+                                    class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-white/50 group-hover:border-white transition-colors duration-300"
+                                >
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">
+                                    BS in Computer Science
+                                </h3>
+                                <div
+                                    class="text-gray-400 mb-3 font-mono text-sm"
+                                >
+                                    University of Technology • 2016 - 2020
+                                </div>
+                                <p class="text-gray-500">
+                                    Graduated with Honors. Focus on Software
+                                    Engineering and Artificial Intelligence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

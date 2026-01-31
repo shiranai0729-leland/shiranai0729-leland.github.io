@@ -1,0 +1,37 @@
+---
+import { Home, FileText, Award, Folder, User } from "lucide-react";
+
+const navItems = [
+  { href: "/", label: "Home", icon: Home },
+  { href: "/articles", label: "Articles", icon: FileText },
+  { href: "/about", label: "About", icon: User },
+];
+---
+
+<nav class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+  <div
+    class="flex items-center gap-2 px-3 py-3 bg-surface/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl shadow-black/50"
+  >
+    {
+      navItems.map((item) => (
+        <a
+          href={item.href}
+          class="group relative p-3 rounded-full hover:bg-white/10 transition-colors duration-300"
+          aria-label={item.label}
+        >
+          <item.icon className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors duration-300" />
+
+          {/* Tooltip */}
+          <span class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 bg-surface border border-white/10 rounded-lg text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+            {item.label}
+          </span>
+
+          {/* Active Indicator (Simple check for active path) */}
+          {Astro.url.pathname === item.href && (
+            <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+          )}
+        </a>
+      ))
+    }
+  </div>
+</nav>

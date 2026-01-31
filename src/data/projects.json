@@ -1,0 +1,26 @@
+[
+  {
+    "title": "E-commerce Dashboard",
+    "description": "A comprehensive dashboard for managing online stores with real-time analytics.",
+    "technologies": ["React", "Next.js", "Tailwind CSS", "Supabase"],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
+    "image": "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=modern%20dashboard%20ui%20design%20dark%20mode&image_size=landscape_16_9"
+  },
+  {
+    "title": "Task Management App",
+    "description": "Collaborative task manager with drag-and-drop kanban board.",
+    "technologies": ["Vue.js", "Firebase", "Pinia"],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
+    "image": "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=kanban%20board%20app%20interface&image_size=landscape_16_9"
+  },
+   {
+    "title": "AI Image Generator",
+    "description": "Web application that uses Stable Diffusion to generate images from text prompts.",
+    "technologies": ["Python", "FastAPI", "React"],
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com",
+    "image": "https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=ai%20image%20generator%20interface&image_size=landscape_16_9"
+  }
+]

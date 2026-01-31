@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", sans-serif;
+  --font-heading: "Ubuntu", sans-serif;
+  --font-sn-pro: "Nunito", sans-serif;
+
+  --color-background: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-surfaceHighlight: #F3F4F6;
+
+  --color-primary: #FF4D00;
+  --color-secondary: #FF0080;
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}

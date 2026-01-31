@@ -1,0 +1,25 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import ArticleList from "../../components/ArticleList";
+
+const articles = (await getCollection("articles")).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Layout
+	title="Articles | Insights"
+	description="Read my latest articles on web development and technology."
+>
+	<section class="py-24 min-h-screen">
+		<div class="container mx-auto px-4">
+			<h1
+				class="text-5xl md:text-7xl font-heading font-black mb-16 text-center tracking-tighter"
+			>
+				LATEST <span class="text-secondary">INSIGHTS</span>
+			</h1>
+			<ArticleList client:load articles={articles} />
+		</div>
+	</section>
+</Layout>
