@@ -181,8 +181,8 @@ const ProfileCard = () => (
         <div className="flex flex-col items-end text-right">
             <span className="text-xs font-mono uppercase tracking-widest text-gray-400 mb-1">Current Status</span>
             <span className="inline-flex items-center gap-2 text-sm font-medium">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                Open to Work
+                <span className="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>
+                Not Open to Work, Connection Welcome 🤗
             </span>
         </div>
     </div>

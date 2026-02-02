@@ -1,64 +1,212 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Mail, MapPin, Briefcase, GraduationCap } from "lucide-react";
+
+const experiences = [
+    {
+        title: "Application Engineer",
+        company: "Rakuten Group",
+        period: "2026 - Present",
+        description:
+            "Leading the frontend team in rebuilding the core product using Next.js. Improved performance by 40% and established a new design system.",
+    },
+    {
+        title: "AI-Agent Backend Engineer Internship",
+        company: "Sangfor Technologies, Advanced AI Research Institute",
+        period: "2024",
+        description:
+            "Leading the frontend team in rebuilding the core product using Next.js. Improved performance by 40% and established a new design system.",
+    },
+    {
+        title: "VUE Developer Internship",
+        company: "Harbin Institute of Technology Software Engineering Co.Ltd",
+        period: "2022",
+        description:
+            "Developed and maintained multiple client-facing applications. Implemented real-time features using WebSockets.",
+    },
+];
+
+const education = [
+    {
+        title: "M.S.c in Big Data Technology",
+        school: "The Hongkong University of Science and Technology",
+        period: "2024 - 2025",
+        description:
+            "Graduated with Honors. Focus on Software Engineering and Artificial Intelligence.",
+    },
+    {
+        title: "B.E. in Computer Science",
+        school: "Harbin Institute of Technology (Shenzhen)",
+        period: "2020 - 2024",
+        description:
+            "Graduated with Honors. Focus on Software Engineering and Artificial Intelligence.",
+    },
+];
+
+const skills = [
+    "Java",
+    "Python",
+    "Spring",
+    "Springboot",
+    "React",
+    "VUE",
+    "Django",
+    "Android Native Development",
+    "Kotlin",
+];
+
+const languages = [
+    { name: "Mandarin", level: "Native" },
+    { name: "English", level: "Fluent (IELTS 8.0)" },
+    { name: "Japanese", level: "Conversational (JLPT N2)" },
+    { name: "Cantonese", level: "Conversational" },
+];
+
+const certificates = [
+    "AWS Certified Solutions Architect",
+    "Google Cloud Professional Engineer",
+    "Certified Kubernetes Administrator (CKA)",
+];
+
+const projects = [
+    {
+        title: "Autonomous Agent Framework",
+        description:
+            "Developed a distributed framework for multi-agent collaboration using LLMs.",
+        link: "https://github.com/shiranai/agentic-flow",
+        period: "2024",
+    },
+    {
+        title: "Microservices Observability Tool",
+        description:
+            "Built a real-time monitoring dashboard for Kubernetes clusters.",
+        link: "https://github.com/shiranai/k8s-eye",
+        period: "2023",
+    },
+];
+
+const friendlyLinks = [
+    {
+        name: "Trae",
+        link: "https://www.trae.ai/",
+        description: "Adaptive AI Code Editor",
+    },
+    {
+        name: "Astro",
+        link: "https://astro.build",
+        description: "The web framework for content-driven websites",
+    },
+];
 ---
 
 <Layout
     title="About Me | Shiranai"
     description="Learn more about my background, skills, and experience."
 >
-    <section class="py-24 min-h-screen">
-        <div class="container mx-auto px-4 max-w-4xl">
+    <!-- Minimalist Hero -->
+    <section class="pt-32 pb-12 md:pt-48 md:pb-24 px-6 md:px-12 bg-background">
+        <div class="container mx-auto max-w-6xl">
             <h1
-                class="text-5xl md:text-7xl font-black mb-16 text-center tracking-tighter"
+                class="text-7xl md:text-9xl font-heading font-black tracking-tighter text-gray-900 mb-8 leading-[0.9]"
             >
-                ABOUT <span class="text-secondary">ME</span>
+                About.
             </h1>
+            <p
+                class="text-xl md:text-2xl text-gray-500 font-light max-w-2xl leading-relaxed"
+            >
+                Fullstack Application Engineer based in Tokyo, Japan.
+            </p>
+        </div>
+    </section>
 
-            <div class="flex flex-col md:flex-row gap-12 mb-20 items-start">
-                <div class="md:w-1/3 sticky top-24">
-                    <div
-                        class="rounded-3xl overflow-hidden shadow-2xl mb-8 border border-black/10 relative group"
-                    >
+    <!-- Content Grid -->
+    <section class="pb-32 px-6 md:px-12">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
+                <!-- Left Column: Image & Contact -->
+                <div class="md:col-span-5">
+                    <div class="sticky top-12">
                         <div
-                            class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"
+                            class="perspective-1000 mb-12 aspect-[3/4] group cursor-pointer"
+                            id="tilt-card-container"
                         >
-                        </div>
-                        <img
-                            src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=cyberpunk%20developer%20portrait%20casual%20neon&image_size=portrait_4_3"
-                            alt="Profile"
-                            class="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700"
-                        />
-                    </div>
-                    <div class="space-y-4 text-sm font-medium">
-                        <div
-                            class="flex items-center text-gray-600 p-4 bg-surface rounded-2xl border border-black/5 hover:border-black/20 transition-colors"
-                        >
-                            <MapPin className="w-5 h-5 mr-3 text-primary" />
-                            <span>San Francisco, CA</span>
-                        </div>
-                        <div
-                            class="flex items-center text-gray-400 p-4 bg-surface rounded-2xl border border-black/5 hover:border-white/20 transition-colors"
-                        >
-                            <Mail className="w-5 h-5 mr-3 text-secondary" />
-                            <a
-                                href="mailto:hello@example.com"
-                                class="hover:text-primary transition-colors"
-                                >hello@example.com</a
+                            <div
+                                class="preserve-3d w-full h-full relative shadow-2xl rounded-2xl"
+                                id="tilt-card"
                             >
+                                <!-- Front -->
+                                <div
+                                    class="backface-hidden absolute inset-0 rounded-2xl overflow-hidden bg-gray-100"
+                                >
+                                    <img
+                                        src="/images/about-page.png"
+                                        alt="Profile"
+                                        class="w-full h-full object-cover"
+                                    />
+                                </div>
+                                <!-- Back -->
+                                <div
+                                    class="backface-hidden absolute inset-0 rounded-2xl overflow-hidden bg-gray-900 rotate-y-180 flex items-center justify-center"
+                                >
+                                    <img
+                                        src="/images/about-page-back.jpg"
+                                        alt="Secret Profile"
+                                        class="w-full h-full object-cover opacity-60"
+                                    />
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 text-left"
+                                    >
+                                        <p
+                                            class="text-white font-heading text-2xl font-bold mb-2"
+                                        >
+                                            Shiranai
+                                        </p>
+                                        <p
+                                            class="text-gray-300 font-mono text-sm leading-relaxed"
+                                        >
+                                            Crafting the unknown, <br />byte by
+                                            byte.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3
+                                    class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-4 border-t border-gray-200 pt-4"
+                                >
+                                    Location
+                                </h3>
+                                <span class="text-lg text-gray-900"
+                                    >Minato City, Tokyo, Japan</span
+                                >
+                            </div>
+                            <div>
+                                <h3
+                                    class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-4 border-t border-gray-200 pt-4"
+                                >
+                                    Contact
+                                </h3>
+                                <a
+                                    href="mailto:sh1ranai@yahoo.com"
+                                    class="text-lg text-gray-900 underline decoration-gray-300 hover:decoration-primary underline-offset-4 transition-all"
+                                    >sh1ranai@yahoo.com</a
+                                >
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="md:w-2/3">
-                    <div class="prose prose-lg mb-16">
-                        <p class="lead text-xl text-gray-700">
-                            Hi, I'm a passionate <span
-                                class="text-primary font-bold"
-                                >Creative Developer</span
-                            > with over 5 years of experience in crafting immersive
-                            digital experiences. I blend technical expertise with
-                            artistic vision to solve complex problems.
+                <!-- Right Column: Bio & Details -->
+                <div class="md:col-span-7 space-y-24">
+                    <!-- Bio -->
+                    <div class="prose prose-lg prose-gray">
+                        <p
+                            class="text-2xl text-gray-800 leading-relaxed font-light mb-8"
+                        >
+                            I blend technical expertise with artistic vision to
+                            solve complex problems.
                         </p>
                         <p class="text-gray-600">
                             My journey started when I wrote my first line of
@@ -69,124 +217,308 @@ import { Mail, MapPin, Briefcase, GraduationCap } from "lucide-react";
                         </p>
                     </div>
 
-                    <h3
-                        class="text-2xl font-bold mb-6 text-gray-900 flex items-center gap-2"
-                    >
-                        <span
-                            class="w-8 h-1 bg-gradient-to-r from-primary to-secondary rounded-full"
-                        ></span>
-                        Skills
-                    </h3>
-                    <div class="flex flex-wrap gap-3 mb-16">
-                        {
-                            [
-                                "JavaScript",
-                                "TypeScript",
-                                "React",
-                                "Vue",
-                                "Node.js",
-                                "Python",
-                                "AWS",
-                                "Docker",
-                                "GraphQL",
-                                "GSAP",
-                                "Three.js",
-                                "WebGL",
-                            ].map((skill) => (
-                                <span class="bg-surface border border-black/10 text-gray-600 px-4 py-2 rounded-full text-sm font-medium hover:border-primary/50 hover:text-primary transition-colors cursor-default">
-                                    {skill}
-                                </span>
-                            ))
-                        }
-                    </div>
-
-                    <div class="mb-16">
+                    <!-- Experience -->
+                    <div>
                         <h2
-                            class="text-3xl font-bold mb-10 flex items-center gap-4 text-gray-900"
+                            class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 border-t border-gray-200 pt-6"
                         >
-                            <Briefcase className="w-8 h-8 text-primary" /> Experience
+                            Experience
                         </h2>
-                        <div
-                            class="space-y-12 border-l border-black/10 pl-8 relative"
-                        >
-                            <div class="relative group">
-                                <div
-                                    class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-primary group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(255,77,0,0.5)]"
-                                >
-                                </div>
-                                <h3
-                                    class="text-2xl font-bold text-gray-900 group-hover:text-primary transition-colors"
-                                >
-                                    Senior Frontend Engineer
-                                </h3>
-                                <div
-                                    class="text-primary mb-3 font-mono text-sm"
-                                >
-                                    Tech Corp Inc. • 2022 - Present
-                                </div>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Leading the frontend team in rebuilding the
-                                    core product using Next.js and Tailwind CSS.
-                                    Improved performance by 40% and implemented
-                                    a new design system.
-                                </p>
-                            </div>
-                            <div class="relative group">
-                                <div
-                                    class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-secondary group-hover:scale-125 transition-transform duration-300 shadow-[0_0_10px_rgba(255,0,128,0.5)]"
-                                >
-                                </div>
-                                <h3
-                                    class="text-2xl font-bold text-gray-900 group-hover:text-secondary transition-colors"
-                                >
-                                    Software Developer
-                                </h3>
-                                <div
-                                    class="text-secondary mb-3 font-mono text-sm"
-                                >
-                                    StartupXYZ • 2020 - 2022
-                                </div>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Developed and maintained multiple
-                                    client-facing applications. Implemented
-                                    real-time features using WebSockets and
-                                    WebGL visualizations.
-                                </p>
-                            </div>
+                        <div class="space-y-12">
+                            {
+                                experiences.map((exp) => (
+                                    <div class="group">
+                                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                                                {exp.title}
+                                            </h3>
+                                            <span class="font-mono text-sm text-gray-400">
+                                                {exp.period}
+                                            </span>
+                                        </div>
+                                        <div class="text-gray-500 text-sm mb-4 font-medium">
+                                            {exp.company}
+                                        </div>
+                                        <p class="text-gray-600 leading-relaxed">
+                                            {exp.description}
+                                        </p>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
 
+                    <!-- Education -->
                     <div>
                         <h2
-                            class="text-3xl font-bold mb-10 flex items-center gap-4 text-gray-900"
+                            class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 border-t border-gray-200 pt-6"
                         >
-                            <GraduationCap className="w-8 h-8 text-secondary" /> Education
+                            Education
                         </h2>
-                        <div
-                            class="space-y-12 border-l border-black/10 pl-8 relative"
+                        <div class="space-y-12">
+                            {
+                                education.map((edu) => (
+                                    <div>
+                                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                                            <h3 class="text-xl font-bold text-gray-900">
+                                                {edu.title}
+                                            </h3>
+                                            <span class="font-mono text-sm text-gray-400">
+                                                {edu.period}
+                                            </span>
+                                        </div>
+                                        <div class="text-gray-500 text-sm mb-4 font-medium">
+                                            {edu.school}
+                                        </div>
+                                        <p class="text-gray-600 leading-relaxed">
+                                            {edu.description}
+                                        </p>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Projects -->
+                    <div>
+                        <h2
+                            class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 border-t border-gray-200 pt-6"
                         >
-                            <div class="relative group">
-                                <div
-                                    class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-surface border-2 border-black/50 group-hover:border-black transition-colors duration-300"
-                                >
-                                </div>
-                                <h3 class="text-2xl font-bold text-gray-900">
-                                    BS in Computer Science
-                                </h3>
-                                <div
-                                    class="text-gray-500 mb-3 font-mono text-sm"
-                                >
-                                    University of Technology • 2016 - 2020
-                                </div>
-                                <p class="text-gray-600">
-                                    Graduated with Honors. Focus on Software
-                                    Engineering and Artificial Intelligence.
-                                </p>
-                            </div>
+                            Featured Projects
+                        </h2>
+                        <div class="space-y-12">
+                            {
+                                projects.map((project) => (
+                                    <div>
+                                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                                            <h3 class="text-xl font-bold text-gray-900">
+                                                {project.title}
+                                            </h3>
+                                            <span class="font-mono text-sm text-gray-400">
+                                                {project.period}
+                                            </span>
+                                        </div>
+                                        <p class="text-gray-600 leading-relaxed mb-4">
+                                            {project.description}
+                                        </p>
+                                        <a
+                                            href={project.link}
+                                            class="text-sm font-medium text-primary hover:underline underline-offset-4 inline-flex items-center gap-1"
+                                        >
+                                            View Source
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="2"
+                                                stroke="currentColor"
+                                                class="w-3 h-3"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                                                />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Language Row -->
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-12">
+                        <!-- Languages -->
+                        <div>
+                            <h2
+                                class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-8 border-t border-gray-200 pt-6"
+                            >
+                                Languages
+                            </h2>
+                            <ul class="flex flex-wrap gap-x-12 gap-y-4">
+                                {
+                                    languages.map((lang) => (
+                                        <li class="flex items-center gap-4">
+                                            <span class="text-gray-900 font-medium">
+                                                {lang.name}
+                                            </span>
+                                            <span class="text-gray-400 text-sm font-mono">
+                                                {lang.level}
+                                            </span>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Skills (Moved to Bottom) -->
+                    <div>
+                        <h2
+                            class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 border-t border-gray-200 pt-6"
+                        >
+                            Tech Stack
+                        </h2>
+                        <ul class="columns-2 md:columns-3 space-y-2">
+                            {
+                                skills.map((skill) => (
+                                    <li class="text-gray-600 font-medium">
+                                        {skill}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <!-- Friendly Links -->
+                    <div>
+                        <h2
+                            class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 border-t border-gray-200 pt-6"
+                        >
+                            Friendly Links
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {
+                                friendlyLinks.map((link) => (
+                                    <a
+                                        href={link.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="group block p-6 border border-gray-100 rounded-xl hover:border-primary/30 hover:bg-primary/[0.02] transition-all duration-300"
+                                    >
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
+                                                {link.name}
+                                            </span>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke-width="2"
+                                                stroke="currentColor"
+                                                class="w-4 h-4 text-gray-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                                                />
+                                            </svg>
+                                        </div>
+                                        <p class="text-sm text-gray-500 line-clamp-1">
+                                            {link.description}
+                                        </p>
+                                    </a>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Subtle Scroll Reveal Script -->
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Simple entrance
+        gsap.from("h1", { opacity: 0, y: 50, duration: 1, ease: "power3.out" });
+        gsap.from("p", {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            delay: 0.2,
+            ease: "power3.out",
+        });
+
+        // Stagger grid items appear
+        const sections = document.querySelectorAll(".md\\:col-span-7 > div");
+        sections.forEach((section, i) => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 90%",
+                },
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                delay: 0.1,
+                ease: "power2.out",
+            });
+        });
+
+        // Cursor-driven tilt effect
+        const cardContainer = document.querySelector("#tilt-card-container");
+        const card = document.querySelector("#tilt-card");
+        let isFlipped = false;
+
+        if (cardContainer && card) {
+            cardContainer.addEventListener("mousemove", (e) => {
+                const mouseEvent = e as MouseEvent;
+                const rect = cardContainer.getBoundingClientRect();
+                const x = mouseEvent.clientX - rect.left;
+                const y = mouseEvent.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                // Calculate rotation based on cursor position relative to center
+                // Sensitivity 1/15
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+
+                const baseRotateY = isFlipped ? 180 : 0;
+
+                gsap.to(card, {
+                    rotateX: rotateX,
+                    rotateY: baseRotateY + rotateY,
+                    scale: 1.02,
+                    duration: 0.2,
+                    ease: "power2.out",
+                    overwrite: "auto",
+                });
+            });
+
+            cardContainer.addEventListener("mouseleave", () => {
+                const baseRotateY = isFlipped ? 180 : 0;
+                gsap.to(card, {
+                    rotateX: 0,
+                    rotateY: baseRotateY,
+                    scale: 1,
+                    duration: 0.8,
+                    ease: "elastic.out(1, 0.6)",
+                });
+            });
+
+            cardContainer.addEventListener("click", () => {
+                isFlipped = !isFlipped;
+                gsap.to(card, {
+                    rotateY: isFlipped ? 180 : 0,
+                    duration: 0.8,
+                    ease: "back.out(1.2)",
+                });
+            });
+        }
+    </script>
+
+    <style>
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+    </style>
 </Layout>
