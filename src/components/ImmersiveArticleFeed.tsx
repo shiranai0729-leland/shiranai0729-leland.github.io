@@ -168,10 +168,10 @@ const ProfileCard = () => (
                 />
             </div>
             <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900">Digital Craftsman</h2>
+                <h2 className="text-3xl md:text-4xl font-bold font-heading text-gray-900">Leland</h2>
                 <p className="text-gray-600 text-lg max-w-sm mt-3 leading-relaxed">
-                    Building immersive digital experiences with code and design.
-                    Based in San Francisco.
+                    Building applications to empower the world.
+                    Based in Tokyo.
                 </p>
                 <a href="/about" className="inline-flex items-center gap-2 mt-4 text-base font-bold text-gray-900 hover:text-primary transition-colors border-b-2 border-gray-900 hover:border-primary pb-0.5">
                     More About Me <ArrowUpRight className="w-4 h-4" />
