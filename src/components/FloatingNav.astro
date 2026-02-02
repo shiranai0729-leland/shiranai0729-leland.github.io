@@ -8,30 +8,33 @@ const navItems = [
 ];
 ---
 
-<nav class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
   <div
-    class="flex items-center gap-2 px-3 py-3 bg-surface/80 backdrop-blur-xl border border-black/10 rounded-full shadow-2xl shadow-black/10"
+    class="flex items-center justify-between px-2 py-1.5 bg-surface/90 backdrop-blur-xl border border-black/10 rounded-full shadow-2xl shadow-black/5"
   >
     {
-      navItems.map((item) => (
-        <a
-          href={item.href}
-          class="group relative p-3 rounded-full hover:bg-black/5 transition-colors duration-300"
-          aria-label={item.label}
-        >
-          <item.icon className="w-5 h-5 text-gray-500 group-hover:text-primary transition-colors duration-300" />
+      navItems.map((item) => {
+        const isActive = Astro.url.pathname === item.href;
+        return (
+          <a
+            href={item.href}
+            class={`group relative flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+              isActive
+                ? "bg-black text-white"
+                : "hover:bg-black/5 text-gray-500 hover:text-gray-900"
+            }`}
+            aria-label={item.label}
+          >
+            <item.icon
+              className={`w-4 h-4 ${isActive ? "text-white" : "text-current"}`}
+            />
 
-          {/* Tooltip */}
-          <span class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1 bg-surface border border-black/10 rounded-lg text-xs font-medium text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-            {item.label}
-          </span>
-
-          {/* Active Indicator (Simple check for active path) */}
-          {Astro.url.pathname === item.href && (
-            <span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
-          )}
-        </a>
-      ))
+            <span class="text-sm font-medium font-mono tracking-tight">
+              {item.label}
+            </span>
+          </a>
+        );
+      })
     }
   </div>
 </nav>

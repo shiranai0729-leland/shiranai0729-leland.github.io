@@ -2,8 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { ArrowDown, Sun } from "lucide-react";
 import { getCollection } from "astro:content";
-import HomeArticleFeed from "../components/HomeArticleFeed";
-import SocialSidebar from "../components/SocialSidebar.astro";
+import ImmersiveArticleFeed from "../components/ImmersiveArticleFeed";
 
 // Fetch latest 5 articles
 const allArticles = await getCollection("articles");
@@ -64,7 +63,7 @@ const latestArticles = allArticles
             <!-- Left: Main Typography -->
             <div class="hero-text opacity-0 translate-y-10">
                 <h1
-                    class="text-6xl md:text-8xl lg:text-9xl font-heading font-black leading-[0.85] tracking-tight text-gray-900 mb-4"
+                    class="text-5xl md:text-7xl lg:text-8xl font-heading font-black leading-[0.85] tracking-tight text-gray-900 mb-4"
                 >
                     Application<br />
                     engineer
@@ -74,6 +73,18 @@ const latestArticles = allArticles
                 >
                     <p>Staying humble, building everything</p>
                     <p>知らないから、すべてを創れる</p>
+                </div>
+            </div>
+
+            <!-- Right: Scroll Hint -->
+            <div
+                class="hidden md:flex flex-col items-end justify-end h-full pb-2 hero-text opacity-0 translate-y-10"
+            >
+                <div
+                    class="flex items-center gap-3 text-gray-400 font-mono text-xs uppercase tracking-[0.2em] animate-pulse"
+                >
+                    <span>Scroll to explore</span>
+                    <ArrowDown className="w-4 h-4" />
                 </div>
             </div>
         </div>
@@ -89,22 +100,14 @@ const latestArticles = allArticles
 
     <!-- Main Content Layout -->
     <section
-        class="min-h-screen py-24 relative z-10 bg-background flex items-center"
+        class="min-h-screen py-24 relative z-10 bg-background"
         id="projects"
     >
-        <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-12 gap-12">
-                <!-- Left Column: Article Feed (8 cols) -->
-                <div class="lg:col-span-8">
-                    <HomeArticleFeed client:visible articles={latestArticles} />
-                </div>
-
-                <!-- Right Column: Sidebar (4 cols) -->
-                <div class="lg:col-span-4">
-                    <SocialSidebar />
-                </div>
-            </div>
-        </div>
+        <ImmersiveArticleFeed
+            client:visible
+            articles={latestArticles}
+            showFilters={false}
+        />
     </section>
 
     <script>

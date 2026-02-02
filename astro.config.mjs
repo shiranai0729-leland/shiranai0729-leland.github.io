@@ -10,8 +10,16 @@ export default defineConfig({
   base: '/', // Replace with your repo name if deploying to a subpath (e.g. '/my-repo')
   output: 'static',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    ssr: {
+      noExternal: ["gsap"],
+    },
   },
 
-  integrations: [react()]
+  integrations: [react()],
+  markdown: {
+    shikiConfig: {
+      theme: 'github-light',
+    },
+  },
 });
