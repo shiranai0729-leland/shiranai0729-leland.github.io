@@ -4,58 +4,127 @@ import { MoveUpRight, Github, Lock, Award, ExternalLink } from "lucide-react";
 
 const projects = [
     {
-        title: "Agentic Flow",
-        description: "A distributed framework for multi-agent collaboration using LLMs. Orchestrates complex workflows with autonomous agents.",
-        image: "/images/about-page.png", // Placeholder
-        link: "https://agentic-flow.dev",
-        github: "https://github.com/shiranai/agentic-flow",
-        tags: ["AI", "Typescript", "LLM"],
+        title: "Project Akari",
+        description: "An LLM downstreaming project focusing on Entry-sheet generation, Resume Polishing, and Interview preparation. I developed this project with Team CrossPolate",
+        image: "/images/project-akari.png", // Placeholder
+        link: "#",
+        github: null,
+        tags: ["AI", "LLM", "Job-hunting"],
+        status: "construction"
+    },
+    {
+        title: "Echo Reader",
+        description: "A EPUB reader web application integrated with Language-learning copilot, optimized for vertical writing in Japanese content. I developed this project with Team CrossPolate",
+        image: "/images/project-echo.png", // Placeholder
+        link: "#",
+        github: null,
+        tags: ["Web", "EPUB", "Language-learning"],
+        status: "construction"
+    },
+    {
+        title: "APWSVD",
+        description: "Compressing LLM with Activation and Parameter Weighted SVD. This project is associated with my Master's degree in HKUST.",
+        image: null, // Placeholder
+        link: "#",
+        github: null,
+        tags: ["AI", "LLM", "SVD"],
+        status: "construction"
+    },
+    {
+        title: "Controllable TTS",
+        description: "Graduation Project for B.E of Computer Science in HITSZ. A system of generating voice from plain text with the controllability of tone, emotion, and speaker. ",
+        image: "/images/project-ctts.png",
+        link: "#",
+        github: "https://github.com/shiranai0729/CTTS",
+        tags: ["AI", "TTS"],
         status: "live"
     },
     {
-        title: "K8s Eye",
-        description: "Real-time monitoring dashboard for Kubernetes clusters with predictive anomaly detection.",
-        image: "/images/about-page-back.jpg", // Placeholder
+        title: "Campus Enquiry Cloud Service",
+        description: "Provincial-level Innovation Project. A Natural Language Processing (NLP) project based on BERT, offering AI chat services for students to enquiry about particular information. Currently in service on the official website of the finance department of HITSZ.",
+        image: null, // Placeholder
         link: "#",
-        github: "https://github.com/shiranai/k8s-eye",
-        tags: ["Kubernetes", "Go", "React"],
-        status: "construction"
+        github: "https://github.com/shiranai0729/CTTS",
+        tags: ["AI", "TTS"],
+        status: "live"
     },
     {
-        title: "Neural Canvas",
-        description: "Generative art platform allowing users to co-create digital masterpieces with AI.",
-        image: "/images/avatar.png", // Placeholder
+        title: "\"Touhou Danmaku Yoru\" (Aircraft Fighting Game)",
+        description: "A 2D aircraft fighting game on Android, a course project of Object-Oriented Programming in HITSZ. It gets a grade of 100/100.",
+        image: null,
+        link: "#",
+        github: "https://github.com/SomebodyScream/AircraftFight_Android",
+        tags: ["Game", "2D", "Aircraft Fighting"],
+        status: "live"
+    },
+    {
+        title: "Intake Tracker",
+        description: "Copyright Certificated. An Android app for tracking daily caffeine intake. It helps users to monitor their caffeine consumption and set daily limits.",
+        image: null,
         link: "#",
         github: null,
-        tags: ["Next.js", "Three.js", "Canvas"],
-        status: "construction"
+        tags: ["Android", "App", "Caffeine"],
+        status: "live"
+    },
+    {
+        title: "Campus life Butler",
+        description: "An Android app based on Kotlin language, providing a platform for students to checkout dishes in different canteens and other facilities in the University Town of Shenzhen.",
+        image: null,
+        link: "#",
+        github: null,
+        tags: ["Android", "App", "Canteen"],
+        status: "live"
     }
 ];
 
 const certificates = [
     {
-        title: "AWS Certified Solutions Architect",
-        issuer: "Amazon Web Services",
-        date: "2024",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg",
-        link: "#",
-        description: "Validated expertise in designing distributed systems on AWS."
+        title: "Business English: Basics",
+        issuer: "The Hong Kong University of Science and Technology",
+        date: "Jul 2025",
+        logo: "https://s2.loli.net/2026/02/02/fiyrQE36XwD74Rt.png",
+        link: "https://www.coursera.org/account/accomplishments/verify/LTPMZRC3PTFB",
+        description: "An online course authorized by HKUST."
     },
     {
-        title: "Google Cloud Professional Engineer",
-        issuer: "Google Cloud",
-        date: "2023",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg",
-        link: "#",
-        description: "Demonstrated ability to design, build, and manage solutions on Google Cloud."
+        title: "Smart Contracts",
+        issuer: "The State University of New York",
+        date: "Jul 2025",
+        logo: "https://s2.loli.net/2026/02/02/jyDCEL4PX3RpO6I.png",
+        link: "https://www.coursera.org/account/accomplishments/verify/1ZVSTAC5OHTV",
+        description: "Design, code, deploy and execute a smart contract "
     },
     {
-        title: "Certified Kubernetes Administrator (CKA)",
-        issuer: "The Linux Foundation",
-        date: "2023",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
-        link: "#",
-        description: "Certified proficiency in Kubernetes installation, configuration, and management."
+        title: "The Future of Payment Technologies",
+        issuer: "University of Michigan",
+        date: "Jul 2025",
+        logo: "https://s2.loli.net/2026/02/02/yuO3gi8foIdbsjQ.png",
+        link: "https://www.coursera.org/account/accomplishments/verify/7XZR7257RG8D",
+        description: "New ways of making payments from consumer-to-business (C2B), from consumer-to-consumer (C2C), and from business-to-business (B2B)"
+    },
+    {
+        title: "Blockchain Basics",
+        issuer: "University at Buffalo",
+        date: "May 2025",
+        logo: "https://s2.loli.net/2026/02/02/h9BFZd6g25vHlNb.jpg",
+        link: "https://www.coursera.org/account/accomplishments/verify/MPG0I0S12H5O",
+        description: "Foundational concepts of blockchain"
+    },
+    {
+        title: "MicroMaster of Big Data Technology",
+        issuer: "The Hong Kong University of Science and Technology",
+        date: "Jun 2024",
+        logo: "https://s2.loli.net/2026/02/02/fiyrQE36XwD74Rt.png",
+        link: "https://credentials.edx.org/credentials/6e7ed4d4ae0446ac9ad6d8bf6c6e343a/",
+        description: "A program offered by The Hong Kong University of Science and Technology, in collaboration with edX."
+    },
+    {
+        title: "Big Data Technology Capstone Project",
+        issuer: "edX",
+        date: "Jun 2024",
+        logo: "https://s2.loli.net/2026/02/02/xRDh3L9EPQwKJ5C.png",
+        link: "https://courses.edx.org/certificates/a2a42f6c47744139b73b014808ff8cc0",
+        description: "Big Data Technology Capstone Project"
     }
 ];
 ---
@@ -80,54 +149,71 @@ const certificates = [
                     <span class="font-mono text-sm">{projects.length} Items</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
+                <div class="space-y-16">
                     {projects.map((project, index) => (
-                        <div class="project-item group">
+                        <div class="project-item group flex flex-col md:flex-row gap-8 md:gap-12 items-start">
                              <!-- Image Container -->
-                            <div class="relative overflow-hidden rounded-xl aspect-[16/10] bg-gray-100 mb-6">
-                                <img 
-                                    src={project.image} 
-                                    alt={project.title}
-                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 will-change-transform"
-                                />
+                            <div class="w-full md:w-[320px] flex-shrink-0 relative overflow-hidden rounded-lg aspect-[16/10] bg-gray-100 shadow-sm group-hover:shadow-md transition-shadow duration-300">
+                                {project.image ? (
+                                    <img 
+                                        src={project.image} 
+                                        alt={project.title}
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 will-change-transform"
+                                    />
+                                ) : (
+                                    <div class="w-full h-full flex items-center justify-center bg-gray-50 border border-gray-100 overflow-hidden relative transition-all duration-500 group-hover:bg-white select-none">
+                                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px); background-size: 24px 24px;"></div>
+                                        <div class="absolute top-4 left-4 w-2 h-2 border-t border-l border-gray-200 transition-colors duration-500 group-hover:border-gray-300"></div>
+                                        <div class="absolute top-4 right-4 w-2 h-2 border-t border-r border-gray-200 transition-colors duration-500 group-hover:border-gray-300"></div>
+                                        <div class="absolute bottom-4 left-4 w-2 h-2 border-b border-l border-gray-200 transition-colors duration-500 group-hover:border-gray-300"></div>
+                                        <div class="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-gray-200 transition-colors duration-500 group-hover:border-gray-300"></div>
+                                        <span class="text-2xl md:text-3xl font-heading font-black text-gray-200 uppercase tracking-tighter transition-all duration-700 group-hover:text-gray-300 group-hover:scale-105 text-center px-8 leading-[0.9] break-words">
+                                            {project.title}
+                                        </span>
+                                        <div class="absolute bottom-4 right-6 flex items-center gap-2">
+                                            <span class="text-[9px] font-mono text-gray-400 uppercase tracking-widest leading-none">{project.status}</span>
+                                            <div class={`w-1 h-1 rounded-full ${project.status === 'live' ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                                        </div>
+                                    </div>
+                                )}
                                 <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                                      {project.status === 'live' ? (
-                                        <a href={project.link} target="_blank" class="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform" title="Visit Website">
-                                            <MoveUpRight className="w-5 h-5" />
+                                        <a href={project.link} target="_blank" class="p-2 bg-white text-black rounded-full hover:scale-110 transition-transform" title="Visit Website">
+                                            <MoveUpRight className="w-4 h-4" />
                                         </a>
                                      ) : (
-                                        <div class="p-3 bg-white/20 text-white backdrop-blur-md rounded-full cursor-not-allowed" title="Under Construction">
-                                            <Lock className="w-5 h-5" />
+                                        <div class="p-2 bg-white/20 text-white backdrop-blur-md rounded-full cursor-not-allowed" title="Under Construction">
+                                            <Lock className="w-4 h-4" />
                                         </div>
                                      )}
                                      {project.github && (
-                                         <a href={project.github} target="_blank" class="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform" title="View Source">
-                                            <Github className="w-5 h-5" />
+                                         <a href={project.github} target="_blank" class="p-2 bg-white text-black rounded-full hover:scale-110 transition-transform" title="View Source">
+                                            <Github className="w-4 h-4" />
                                         </a>
                                      )}
                                 </div>
                             </div>
 
                             <!-- Content -->
-                            <div>
-                                <div class="flex items-baseline justify-between mb-3">
-                                    <h3 class="text-3xl font-heading font-bold text-gray-900 leading-tight group-hover:text-primary transition-colors">
+                            <div class="flex-grow pt-1">
+                                <div class="flex items-baseline justify-between mb-3 border-b border-gray-100 pb-3 group-hover:border-gray-200 transition-colors">
+                                    <h3 class="text-2xl font-heading font-bold text-gray-900 leading-tight group-hover:text-primary transition-colors">
                                         {project.title}
                                     </h3>
                                     {project.status === 'construction' && (
-                                        <span class="font-mono text-xs text-gray-400 uppercase tracking-wider">
+                                        <span class="font-mono text-xs text-gray-400 uppercase tracking-wider flex-shrink-0 ml-4">
                                             / In Progress
                                         </span>
                                     )}
                                 </div>
                                 
-                                <p class="text-gray-500 text-lg leading-relaxed mb-4 max-w-md">
+                                <p class="text-gray-500 text-base leading-relaxed mb-4 max-w-2xl">
                                     {project.description}
                                 </p>
                                 
                                 <div class="flex flex-wrap gap-x-4 gap-y-2">
                                     {project.tags.map(tag => (
-                                        <span class="text-sm font-mono text-gray-400">#{tag}</span>
+                                        <span class="text-xs font-mono text-gray-400">#{tag}</span>
                                     ))}
                                 </div>
                             </div>
@@ -148,25 +234,25 @@ const certificates = [
                         <a href={cert.link} target="_blank" class="cert-row group block relative py-8 border-b border-gray-200 hover:border-black transition-colors duration-300">
                              <div class="flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
                                 <!-- Logo (Smaller & cleaner) -->
-                                <div class="w-12 h-12 flex-shrink-0 opacity-60 group-hover:opacity-100 transition-opacity grayscale group-hover:grayscale-0">
+                                <div class="w-12 h-12 flex-shrink-0">
                                     <img src={cert.logo} alt={cert.issuer} class="w-full h-full object-contain" />
                                 </div>
 
-                                <div class="flex-grow grid grid-cols-1 md:grid-cols-12 gap-4 md:items-center">
-                                    <div class="md:col-span-5">
+                                <div class="flex-grow flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+                                    <div class="md:w-[40%] flex-shrink-0">
                                         <h3 class="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
                                             {cert.title}
                                         </h3>
                                         <p class="text-sm text-gray-500 font-mono mt-1">{cert.issuer}</p>
                                     </div>
                                     
-                                    <div class="md:col-span-6">
+                                    <div class="md:flex-grow">
                                         <p class="text-gray-600 leading-relaxed text-sm">
                                             {cert.description}
                                         </p>
                                     </div>
 
-                                    <div class="md:col-span-1 text-right">
+                                    <div class="flex-shrink-0 md:text-right w-24">
                                         <span class="font-mono text-sm text-gray-400 group-hover:text-black transition-colors">{cert.date}</span>
                                     </div>
                                 </div>
@@ -192,7 +278,7 @@ const certificates = [
         gsap.from("p", { opacity: 0, y: 20, duration: 1, delay: 0.2, ease: "power3.out" });
 
         // Projects Stagger
-        gsap.utils.toArray<HTMLElement>('.project-card').forEach((card, i) => {
+        (gsap.utils.toArray('.project-item') as HTMLElement[]).forEach((card, i) => {
             gsap.from(card, {
                 scrollTrigger: {
                     trigger: card,
@@ -207,7 +293,7 @@ const certificates = [
         });
 
         // Certificates Stagger
-        gsap.utils.toArray<HTMLElement>('.cert-card').forEach((row, i) => {
+        (gsap.utils.toArray('.cert-row') as HTMLElement[]).forEach((row, i) => {
             gsap.from(row, {
                 scrollTrigger: {
                     trigger: row,
