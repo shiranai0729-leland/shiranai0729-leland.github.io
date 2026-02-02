@@ -6,8 +6,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://github.com', // Replace with your actual site URL
-  base: '/', // Replace with your repo name if deploying to a subpath (e.g. '/my-repo')
+  site: 'https://shiranai0729-leland.github.io',
+  base: '/',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
