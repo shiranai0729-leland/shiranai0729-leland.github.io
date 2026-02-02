@@ -73,6 +73,59 @@ const { Content } = await post.render();
                     {post.data.title}
                 </h1>
 
+                <!-- Font Size Toolbar -->
+                <div
+                    class="font-mono text-xs text-gray-500 mb-8 flex items-center gap-6 border-y border-gray-100 py-3 w-fit pr-8"
+                >
+                    <span class="uppercase tracking-widest text-gray-400"
+                        >Readability</span
+                    >
+                    <div class="flex items-center gap-4">
+                        <button
+                            id="font-decrease"
+                            class="hover:text-black transition-colors p-1"
+                            aria-label="Decrease font size"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><line x1="5" y1="12" x2="19" y2="12"
+                                ></line></svg
+                            >
+                        </button>
+                        <span id="font-size-display" class="w-12 text-center"
+                            >100%</span
+                        >
+                        <button
+                            id="font-increase"
+                            class="hover:text-black transition-colors p-1"
+                            aria-label="Increase font size"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><line x1="12" y1="5" x2="12" y2="19"
+                                ></line><line x1="5" y1="12" x2="19" y2="12"
+                                ></line></svg
+                            >
+                        </button>
+                    </div>
+                </div>
+
                 {
                     post.data.heroImage && (
                         <div class="w-full h-[50vh] md:h-[70vh] relative overflow-hidden mt-12">
@@ -139,6 +192,41 @@ const { Content } = await post.render();
             const progressBar = document.getElementById("scroll-progress");
             if (progressBar) progressBar.style.width = scrolled + "%";
         });
+
+        // Font Size Adjustment
+        const content = document.querySelector(".markdown-content");
+        const display = document.getElementById("font-size-display");
+        const increaseBtn = document.getElementById("font-increase");
+        const decreaseBtn = document.getElementById("font-decrease");
+
+        let currentSizePercent = 100;
+        const baseSize = 1.125; // rem
+
+        function updateSize() {
+            if (content && display) {
+                const newRem = baseSize * (currentSizePercent / 100);
+                (content as HTMLElement).style.fontSize = `${newRem}rem`;
+                display.textContent = `${currentSizePercent}%`;
+            }
+        }
+
+        if (increaseBtn) {
+            increaseBtn.addEventListener("click", () => {
+                if (currentSizePercent < 150) {
+                    currentSizePercent += 10;
+                    updateSize();
+                }
+            });
+        }
+
+        if (decreaseBtn) {
+            decreaseBtn.addEventListener("click", () => {
+                if (currentSizePercent > 80) {
+                    currentSizePercent -= 10;
+                    updateSize();
+                }
+            });
+        }
 
         // Enhance Code Blocks with MacOS style window and Copy button
         function enhanceCodeBlocks() {
