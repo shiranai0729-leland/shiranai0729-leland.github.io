@@ -15,14 +15,18 @@ const navItems = [
   >
     {
       navItems.map((item) => {
-        const isActive = Astro.url.pathname === item.href;
+        const isActive =
+          item.href === "/"
+            ? Astro.url.pathname === "/"
+            : Astro.url.pathname === item.href ||
+              Astro.url.pathname.startsWith(`${item.href}/`);
         return (
           <a
             href={item.href}
-            class={`group relative flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
+            class={`group relative flex items-center gap-2 rounded-full transition-all duration-300 ${
               isActive
-                ? "bg-black text-white"
-                : "hover:bg-black/5 text-gray-500 hover:text-gray-900"
+                ? "bg-black text-white px-4 py-2"
+                : "hover:bg-black/5 text-gray-500 hover:text-gray-900 p-2.5 md:px-4 md:py-2"
             }`}
             aria-label={item.label}
           >
@@ -30,7 +34,11 @@ const navItems = [
               className={`w-4 h-4 ${isActive ? "text-white" : "text-current"}`}
             />
 
-            <span class="text-sm font-medium font-mono tracking-tight">
+            <span
+              class={`text-sm font-medium font-mono tracking-tight ${
+                isActive ? "block" : "hidden md:block"
+              }`}
+            >
               {item.label}
             </span>
           </a>
