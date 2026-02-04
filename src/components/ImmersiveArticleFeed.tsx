@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { gsap } from 'gsap';
-import { ArrowUpRight, Calendar, Tag, Github, Linkedin, Search, X } from 'lucide-react';
+import { ArrowUpRight, Calendar, Github, Linkedin, Search, X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 interface Article {
@@ -78,14 +78,14 @@ const ArticleRow = ({ article, isOpen, onClick, index, isDirectLink }: { article
         >
             <Wrapper
                 {...wrapperProps}
-                className="block py-16 cursor-pointer relative z-10"
+                className="block px-4 md:px-0 py-8 md:py-16 cursor-pointer relative z-10"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
                 <div className="flex items-baseline justify-between">
                     <h3
                         ref={titleRef}
-                        className="text-3xl md:text-4xl font-heading font-bold leading-tight text-gray-900 transition-colors"
+                        className="text-2xl md:text-4xl font-heading font-bold leading-tight text-gray-900 transition-colors"
                     >
                         {article.data.title}
                     </h3>
@@ -94,12 +94,12 @@ const ArticleRow = ({ article, isOpen, onClick, index, isDirectLink }: { article
                     </span>
                 </div>
 
-                <div className="flex items-center gap-4 mt-4 text-sm text-gray-500 font-mono opacity-60 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-sm text-gray-500 font-mono opacity-100 md:opacity-60 md:group-hover:opacity-100 transition-opacity duration-500">
                     <span className="flex items-center gap-2">
                         <Calendar className="w-3 h-3" />
                         {new Date(article.data.pubDate).toLocaleDateString()}
                     </span>
-                    <div className="flex gap-2">
+                    <div className="flex flex-wrap gap-2">
                         {article.data.tags.map(tag => (
                             <span key={tag}>#{tag}</span>
                         ))}
@@ -113,7 +113,7 @@ const ArticleRow = ({ article, isOpen, onClick, index, isDirectLink }: { article
             {!isDirectLink && (
                 <div
                     ref={contentRef}
-                    className="overflow-hidden h-0 opacity-0"
+                    className="overflow-hidden h-0 opacity-0 px-4 md:px-0"
                 >
                     <div className="py-8 pl-4 md:pl-12 border-l-2 border-primary/20 ml-2 md:ml-4">
                         <p className="text-xl md:text-2xl text-gray-700 font-light mb-8 max-w-3xl leading-relaxed">
@@ -154,7 +154,7 @@ const SocialLink = ({ href, icon: Icon, label }: { href: string, icon: any, labe
 )
 
 const ProfileCard = () => (
-    <div className="mb-32 flex flex-col md:flex-row items-end justify-between border-b border-black text-black pb-12 gap-8">
+    <div className="mb-32 px-4 md:px-0 flex flex-col md:flex-row items-end justify-between border-b border-black text-black pb-12 gap-8">
         <div className="flex items-center gap-6">
             <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-black/10">
                 <img
@@ -280,12 +280,12 @@ export default function ImmersiveArticleFeed({ articles, showProfile = true, sho
     }, [articles]);
 
     return (
-        <div ref={containerRef} className="w-full max-w-6xl mx-auto px-4 perspective-1000">
+        <div ref={containerRef} className="w-full max-w-6xl mx-auto px-0 md:px-4 perspective-1000">
             {/* Header / Intro to list */}
             {showProfile && <ProfileCard />}
 
             {showHeader && (
-                <div className="mb-12 space-y-8">
+                <div className="mb-12 px-4 md:px-0 space-y-8">
                     <div className="flex items-end justify-between">
                         <h2 className="text-sm font-mono uppercase tracking-widest text-gray-400">
                             {title}
@@ -368,7 +368,7 @@ export default function ImmersiveArticleFeed({ articles, showProfile = true, sho
                         />
                     ))
                 ) : (
-                    <div className="py-20 text-center text-gray-400 font-mono">
+                    <div className="py-20 px-4 md:px-0 text-center text-gray-400 font-mono">
                         No articles found matching your criteria.
                     </div>
                 )}
@@ -376,7 +376,7 @@ export default function ImmersiveArticleFeed({ articles, showProfile = true, sho
 
             {/* Footer */}
             {!showProfile ? <WavyFooter /> : (
-                <div className="mt-48 pt-24 border-t border-black/10">
+                <div className="mt-48 pt-24 px-4 md:px-0 border-t border-black/10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="col-span-2 md:col-span-2 py-8 pr-8">
                             <h3 className="text-3xl font-heading font-black mb-4">Let's Connect</h3>
