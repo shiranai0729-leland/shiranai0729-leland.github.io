@@ -86,14 +86,24 @@ const projects = [
 
 const friendlyLinks = [
     {
-        name: "Trae",
-        link: "https://www.trae.ai/",
-        description: "Adaptive AI Code Editor",
+        name: "Renns Blog",
+        link: "https://renns.top/",
+        description: "Master in Computer Science | LLM & Embodied Intelligence Researcher | AI Agent Engineer | ACMer & OIer",
     },
     {
-        name: "Astro",
-        link: "https://astro.build",
-        description: "The web framework for content-driven websites",
+        name: "Tdshogi",
+        link: "https://www.tdshogi.com/",
+        description: "1st shogi website & online community in China mainland",
+    },
+    {
+        name: "Cross Polate",
+        link: "https://github.com/CrossPolate",
+        description: "Develop team focusing on empowering users with AI-driven tools.",
+    },
+    {
+        name: "Shiranai blog",
+        link: "https://shiranaiblog.com",
+        description: "Legacy website",
     },
 ];
 ---
@@ -378,7 +388,7 @@ const friendlyLinks = [
                         >
                             Friendly Links
                         </h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 gap-4">
                             {
                                 friendlyLinks.map((link) => (
                                     <a
@@ -406,7 +416,7 @@ const friendlyLinks = [
                                                 />
                                             </svg>
                                         </div>
-                                        <p class="text-sm text-gray-500 line-clamp-1">
+                                        <p class="text-sm text-gray-500">
                                             {link.description}
                                         </p>
                                     </a>

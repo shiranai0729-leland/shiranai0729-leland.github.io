@@ -58,7 +58,7 @@ const latestArticles = allArticles
 
         <!-- Bottom Content Area -->
         <div
-            class="relative z-10 w-full px-8 pb-12 md:pb-24 grid grid-cols-1 md:grid-cols-2 items-end"
+            class="relative z-10 w-full px-8 pb-24 md:pb-24 grid grid-cols-1 md:grid-cols-2 items-end"
         >
             <!-- Left: Main Typography -->
             <div class="hero-text opacity-0 translate-y-10">
@@ -117,7 +117,7 @@ const latestArticles = allArticles
         gsap.registerPlugin(ScrollTrigger);
 
         // --- Logic to Hide Floating Nav on Hero ---
-        const floatingNav = document.querySelector("nav.fixed.bottom-8");
+        const floatingNav = document.querySelector("nav.fixed");
         const heroSection = document.getElementById("hero");
 
         if (floatingNav && heroSection) {

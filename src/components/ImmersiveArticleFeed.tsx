@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { gsap } from 'gsap';
-import { ArrowUpRight, Calendar, Github, Linkedin, Search, X } from 'lucide-react';
+import { ArrowUpRight, Calendar, ChevronDown, ChevronUp, Github, Linkedin, Search, X } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
 interface Article {
@@ -74,7 +74,7 @@ const ArticleRow = ({ article, isOpen, onClick, index, isDirectLink }: { article
     return (
         <div
             ref={rowRef}
-            className="border-b border-black/10 last:border-0 relative group"
+            className="border-b border-black/10 last:border-0 relative group overflow-hidden"
         >
             <Wrapper
                 {...wrapperProps}
@@ -239,7 +239,63 @@ export default function ImmersiveArticleFeed({ articles, showProfile = true, sho
     const [openIndex, setOpenIndex] = useState<number | null>(null);
     const [search, setSearch] = useState('');
     const [selectedTag, setSelectedTag] = useState<string | null>(null);
+    const [isTagsOpen, setIsTagsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
+    const tagsRef = useRef<HTMLDivElement>(null);
+
+    const isTagsOpenRef = useRef(isTagsOpen);
+
+    // Keep ref in sync with state for GSAP matchMedia access
+    useEffect(() => {
+        isTagsOpenRef.current = isTagsOpen;
+    }, [isTagsOpen]);
+
+    // Setup GSAP Context & Responsive Logic (Runs once)
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            const mm = gsap.matchMedia();
+
+            // Desktop: Always visible
+            mm.add("(min-width: 768px)", () => {
+                gsap.set(tagsRef.current, { height: "auto", opacity: 1 });
+            });
+
+            // Mobile: Sync initial state on entry
+            mm.add("(max-width: 767px)", () => {
+                if (isTagsOpenRef.current) {
+                    gsap.set(tagsRef.current, { height: "auto", opacity: 1 });
+                } else {
+                    gsap.set(tagsRef.current, { height: 0, opacity: 0 });
+                }
+            });
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    // Animation Effect (Runs on state change)
+    useEffect(() => {
+        const isMobile = window.matchMedia("(max-width: 767px)").matches;
+        if (!isMobile || !tagsRef.current) return;
+
+        if (isTagsOpen) {
+            gsap.to(tagsRef.current, {
+                height: "auto",
+                opacity: 1,
+                duration: 0.5,
+                ease: "power3.out",
+                overwrite: true
+            });
+        } else {
+            gsap.to(tagsRef.current, {
+                height: 0,
+                opacity: 0,
+                duration: 0.4,
+                ease: "power3.inOut",
+                overwrite: true
+            });
+        }
+    }, [isTagsOpen]);
 
     // Filter Logic
     const allTags = useMemo(() => {
@@ -280,7 +336,7 @@ export default function ImmersiveArticleFeed({ articles, showProfile = true, sho
     }, [articles]);
 
     return (
-        <div ref={containerRef} className="w-full max-w-6xl mx-auto px-0 md:px-4 perspective-1000">
+        <div ref={containerRef} className="w-full max-w-6xl mx-auto px-0 md:px-4 perspective-1000 overflow-x-hidden">
             {/* Header / Intro to list */}
             {showProfile && <ProfileCard />}
 
@@ -319,22 +375,38 @@ export default function ImmersiveArticleFeed({ articles, showProfile = true, sho
                                     )}
                                 </div>
 
-                                <div className="flex flex-wrap gap-2">
+                                <div className="space-y-3">
                                     <button
-                                        onClick={() => setSelectedTag(null)}
-                                        className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${!selectedTag ? 'bg-black text-white' : 'bg-black/5 text-gray-500 hover:text-black hover:bg-black/10'}`}
+                                        onClick={() => setIsTagsOpen(!isTagsOpen)}
+                                        className="md:hidden flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 hover:text-black transition-colors"
                                     >
-                                        All
+                                        <span>{isTagsOpen ? 'Hide Tags' : 'Filter by Tags'}</span>
+                                        {selectedTag && <span className="bg-black text-white px-2 py-0.5 rounded-full text-[10px]">1 Active</span>}
+                                        {isTagsOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                                     </button>
-                                    {allTags.map(tag => (
-                                        <button
-                                            key={tag}
-                                            onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
-                                            className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedTag === tag ? 'bg-black text-white' : 'bg-black/5 text-gray-500 hover:text-black hover:bg-black/10'}`}
-                                        >
-                                            #{tag}
-                                        </button>
-                                    ))}
+
+                                    <div 
+                                        ref={tagsRef} 
+                                        className="overflow-hidden h-0 opacity-0 md:h-auto md:opacity-100"
+                                    >
+                                        <div className="flex flex-wrap gap-2 pt-1">
+                                            <button
+                                                onClick={() => setSelectedTag(null)}
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${!selectedTag ? 'bg-black text-white' : 'bg-black/5 text-gray-500 hover:text-black hover:bg-black/10'}`}
+                                            >
+                                                All
+                                            </button>
+                                            {allTags.map(tag => (
+                                                <button
+                                                    key={tag}
+                                                    onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
+                                                    className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${selectedTag === tag ? 'bg-black text-white' : 'bg-black/5 text-gray-500 hover:text-black hover:bg-black/10'}`}
+                                                >
+                                                    #{tag}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -385,8 +457,8 @@ export default function ImmersiveArticleFeed({ articles, showProfile = true, sho
                                 Always open for interesting collaborations.
                             </p>
                         </div>
-                        <SocialLink href="https://github.com" icon={Github} label="Github" />
-                        <SocialLink href="https://linkedin.com" icon={Linkedin} label="LinkedIn" />
+                        <SocialLink href="https://github.com/shiranai0729" icon={Github} label="Github" />
+                        <SocialLink href="https://www.linkedin.com/in/lelandliu" icon={Linkedin} label="LinkedIn" />
                     </div>
                 </div>
             )}
