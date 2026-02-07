@@ -5,14 +5,6 @@ pubDate: "Feb 6 2026"
 tags: ["AI", "DevOps", "Docker", "GitHub", "Self-Hosted"]
 ---
 
-We’ve all been there. You find an amazing open-source project (in this case, `pr-agent`) that promises to automate your code reviews. You think, *"I'll just spin this up in Docker, and I'm done in 5 minutes."*
-
-Four hours later, you are staring at a `BoxKeyError`, your container is restarting for the 50th time, and you’re wondering why an AI needs "cookie auth credentials."
-
-This is the story of how we deployed a customized AI Code Review Bot. We faced permission errors, confusing entrypoints, environment variable hell, and LLM provider identity crises. Here is the step-by-step guide to doing it right, so you don't have to suffer like we did.
-
----
-
 ## The Goal
 
 We wanted a **self-hosted GitHub App** that:
@@ -22,7 +14,7 @@ We wanted a **self-hosted GitHub App** that:
 3. Posts comments directly in the PR.
 4. Runs via Docker Compose on a cloud server (GCP).
 
-## Phase 1: The Setup (The Happy Path)
+## Phase 1: The Setup
 
 Before touching the server, you need the "identity" for your bot.
 
