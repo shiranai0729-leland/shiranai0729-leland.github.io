@@ -42,6 +42,23 @@ const education = [
     },
 ];
 
+const scholarships = [
+    {
+        name: "HKUST Top Student Award",
+        issuer: "HKUST",
+        period: "November 2025",
+        description:
+            "For outstanding performance in the MSc Program in Big Data Technology 2024-2025",
+    },
+    {
+        name: "HKUST SENG Excellent Student Scholarship",
+        issuer: "HKUST",
+        period: "March 2025",
+        description:
+            "For being top 10% student till Winter 2024",
+    },
+];
+
 const skills = [
     "Java",
     "Python",
@@ -243,15 +260,10 @@ const friendlyLinks = [
                         <p
                             class="text-2xl text-gray-800 leading-relaxed font-light mb-8"
                         >
-                            I blend technical expertise with artistic vision to
-                            solve complex problems.
+                            Relocating to Tokyo in 2026 ✈
                         </p>
                         <p class="text-gray-600">
-                            My journey started when I wrote my first line of
-                            code in a dimly lit dorm room. Since then, I've
-                            worked with innovative startups and established
-                            brands, helping them deliver high-quality,
-                            performant, and visually stunning web applications.
+                           Focusing on Fintech as a software developer, specializing in the technical side of the field
                         </p>
                     </div>
 
@@ -310,6 +322,37 @@ const friendlyLinks = [
                                         </div>
                                         <p class="text-gray-600 leading-relaxed">
                                             {edu.description}
+                                        </p>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Scholarships -->
+                    <div>
+                        <h2
+                            class="font-mono text-xs uppercase tracking-widest text-gray-400 mb-10 border-t border-gray-200 pt-6"
+                        >
+                            Scholarships & Awards
+                        </h2>
+                        <div class="space-y-12">
+                            {
+                                scholarships.map((sch) => (
+                                    <div>
+                                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
+                                            <h3 class="text-xl font-bold text-gray-900">
+                                                {sch.name}
+                                            </h3>
+                                            <span class="font-mono text-sm text-gray-400">
+                                                {sch.period}
+                                            </span>
+                                        </div>
+                                        <div class="text-gray-500 text-sm mb-4 font-medium">
+                                            {sch.issuer}
+                                        </div>
+                                        <p class="text-gray-600 leading-relaxed">
+                                            {sch.description}
                                         </p>
                                     </div>
                                 ))
